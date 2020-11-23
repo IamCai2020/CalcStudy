@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependency", "Dependency", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Figures", "Figures", "{4BED6351-99CB-48F5-8653-80B54BB9D4BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaiCal.MathPro", "CaiCal.MathPro\CaiCal.MathPro.csproj", "{58880979-B0E7-4E91-AC8C-C9188C097AEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaiCal.MathPro.Test", "CaiCal.MathPro.Test\CaiCal.MathPro.Test.csproj", "{45A2E7C2-3818-432C-848F-F2660B748502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,14 @@ Global
 		{E15DEC9F-2F3F-4C1D-85D9-CD9BBC847414}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E15DEC9F-2F3F-4C1D-85D9-CD9BBC847414}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E15DEC9F-2F3F-4C1D-85D9-CD9BBC847414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58880979-B0E7-4E91-AC8C-C9188C097AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58880979-B0E7-4E91-AC8C-C9188C097AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58880979-B0E7-4E91-AC8C-C9188C097AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58880979-B0E7-4E91-AC8C-C9188C097AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45A2E7C2-3818-432C-848F-F2660B748502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A2E7C2-3818-432C-848F-F2660B748502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A2E7C2-3818-432C-848F-F2660B748502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A2E7C2-3818-432C-848F-F2660B748502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
