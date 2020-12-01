@@ -67,20 +67,133 @@ namespace CaiCal.MathPro
                             }
                         }
                         break;
-                    case TokenType.Function:
+                    case TokenType.Function://如果是函数，直接压入堆栈
+                        LoggerManager.WriteDebug($"stack.Push({token})");
+                        stack.Push(token);
                         break;
-                    case TokenType.Operand:
+                    case TokenType.Operand://如果是操作数，加入队列尾部
+                        LoggerManager.WriteDebug($"queue.Enqueue({token})");
+                        queue.Enqueue(token);
                         break;
-                    case TokenType.LeftBracket:
+                    case TokenType.LeftBracket://左括号直接压入堆栈
+                        LoggerManager.WriteDebug($"stack.Push({token})");
+                        stack.Push(token);
                         break;
                     case TokenType.RightBracket:
+                        bool notFindLeftBracket = true;
+                        do
+                        {
+                            Token last = stack.Pop();//依次弹出栈顶Token，直到遇到左括号
+                            LoggerManager.WriteDebug($"stack.Pop() > {last}");
+                            if (last.Type == TokenType.LeftBracket)
+                            {
+                                if (stack.Count == 0)
+                                {
+                                    notFindLeftBracket = false;
+                                    break;
+                                }
+                                else
+                                {
+                                    last = stack.Pop();
+                                    LoggerManager.WriteDebug($"stack.Pop() > {last}");
+                                    if (last.Type == TokenType.Function)
+                                    {
+                                        queue.Enqueue(last);
+                                        LoggerManager.WriteDebug($"queue.Enqueeu({last})");
+                                    }
+                                    else
+                                    {
+                                        stack.Push(last);
+                                        LoggerManager.WriteDebug($"stack.Push({last})");
+                                    }
+                                    notFindLeftBracket = false;
+                                    break;
+                                }
+                            }
+                            queue.Enqueue(last);
+                            LoggerManager.WriteDebug($"queue.Enqueue({last})");
+                        } while (notFindLeftBracket);
                         break;
                     default:
                         break;
                 }
             }
             );
+            LoggerManager.WriteInfor($"Convert to Post Fix Ok ...");
+            var list = queue.ToList();
+            StringBuilder builder = new StringBuilder();
+            list.ForEach(token => builder.Append(token.ToString() + ' '));
+            LoggerManager.WriteInfor($"Post Fix > {builder.ToString()}");
 
+            return queue;
+        }
+
+        public static double EvaluatePostFix(Queue<Token> postFix)
+        {
+            LoggerManager.WriteInfor("");
+            LoggerManager.WriteInfor("");
+            LoggerManager.WriteInfor("");
+            LoggerManager.WriteInfor("Begin to Evaluate Post Fix ... ");
+            Stack<Token> stack = new Stack<Token>();
+
+            while (postFix.Count > 0)
+            {
+                Token last = postFix.Dequeue();
+                LoggerManager.WriteDebug($"postFix.Dequeue() > {last}");
+                if (last.Type == TokenType.Operand)
+                {
+                    stack.Push(last);
+                    LoggerManager.WriteDebug($"stack.Push({last})");
+                }
+                else
+                {
+                    if (last.Type == TokenType.Operator)
+                    {
+                        var right = stack.Pop();
+                        LoggerManager.WriteDebug($"stack.Pop() > {right}");
+                        var left = stack.Pop();
+                        LoggerManager.WriteDebug($"stack.Pop() > {left}");
+                        LoggerManager.WriteDebug($"Calculating > {left} {last} {right}");
+                        var temp = CalculateOpr(left, right, last);
+                        LoggerManager.WriteDebug($"Calculated > {left} {last} {right} = {temp}");
+                        stack.Push(new Token(temp.ToString()));
+                    }else if (last.Type == TokenType.Function)
+                    {
+                        var fun = stack.Pop();
+                        LoggerManager.WriteDebug($"stack.Pop() > {fun}");
+                        LoggerManager.WriteDebug($"Calculating > {last}{fun}");
+                        var temp = CalculateFunc(last, fun);
+                        LoggerManager.WriteDebug($"Calculated > {last}{fun}");
+                        stack.Push(new Token(temp.ToString()));
+                    }
+                }
+                
+            }
+            LoggerManager.WriteInfor($"Finish Evaluating Post Fix ...");
+            if(double.TryParse(stack.Pop().ToString(),out double res))
+            {
+                LoggerManager.WriteInfor($"Result={res}");
+                return res;
+            }
+            else
+            {
+                throw new Exception("计算错误");
+            }
+
+        }
+
+        private static Token CalculateOpr(Token left,Token right,Token opr)
+        {
+            if (left.Type != TokenType.Operand || right.Type != TokenType.Operand || opr.Type != TokenType.Operator)
+                throw new ArgumentException($"Operating: {left} {opr} {right}???");
+            return new Token(CalculateOpr(left.NormalizeString, right.NormalizeString, opr.NormalizeString).ToString());
+        }
+
+        private static Token CalculateFunc(Token fun,Token d)
+        {
+            if (fun.Type != TokenType.Function || d.Type != TokenType.Operand)
+                throw new ArgumentException($"Function: {fun} {d}???");
+            return new Token(CalculateFunc(fun.NormalizeString, d.NormalizeString).ToString());
         }
     }
 }
