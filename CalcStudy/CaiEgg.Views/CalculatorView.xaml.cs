@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CaiEgg.ViewModels;
 
 namespace CaiEgg.Views
 {
@@ -22,6 +23,7 @@ namespace CaiEgg.Views
         public CalculatorView()
         {
             InitializeComponent();
+      //      DataContext = new CalculatorViewModel(); 
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

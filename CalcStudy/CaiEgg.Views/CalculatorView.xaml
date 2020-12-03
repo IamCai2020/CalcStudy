@@ -11,6 +11,7 @@
         Background="#FFB4D2EC"
         WindowStartupLocation="CenterScreen"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        d:DataContext="{x:Static local:DesignModel.Instance}"
         Height="500" Width="360">
     <Window.Resources>
         <ResourceDictionary>
@@ -111,6 +112,8 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="Background" Value="#FFD3E1ED" />
                 <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Command" Value="{Binding InputCommand}" />
+                <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self}}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -186,7 +189,8 @@
                 <Button Visibility="Hidden" Content="0" Style="{DynamicResource ButtonStyle.default}" />
                 <Button Content="C" Foreground="Chocolate" Style="{DynamicResource ButtonStyle.default}" />
                 <!--第二行-->
-                <Button Content="Cos" Style="{DynamicResource ButtonStyle.default}" />
+                <Button Content="Cos" 
+                        Style="{DynamicResource ButtonStyle.default}" />
                 <Button Content="Sin" Style="{DynamicResource ButtonStyle.default}" />
                 <Button Content="^" Style="{DynamicResource ButtonStyle.default}" />
                 <Button Content="+/-" Style="{DynamicResource ButtonStyle.default}" />

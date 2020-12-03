@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{39A85B31-0A79-4E8C-8192-63EFD70DCF19}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>CalcStudy</RootNamespace>
     <AssemblyName>CalcStudy</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -39,6 +39,12 @@
     <ApplicationIcon>cal.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LoongEgg.LoongCore">
+      <HintPath>..\Dependency\LoongEgg.LoongCore.dll</HintPath>
+    </Reference>
+    <Reference Include="LoongEgg.LoongLogger">
+      <HintPath>..\Dependency\LoongEgg.LoongLogger.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -62,6 +68,10 @@
     <None Include="ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CaiEgg.ViewModels\CaiEgg.ViewModels.csproj">
+      <Project>{bc3fb4b6-0c2b-4e1a-b819-d8d52e56b530}</Project>
+      <Name>CaiEgg.ViewModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CaiEgg.Views\CaiEgg.Views.csproj">
       <Project>{189eabc3-ccc2-4381-95c3-82190a6c4380}</Project>
       <Name>CaiEgg.Views</Name>
