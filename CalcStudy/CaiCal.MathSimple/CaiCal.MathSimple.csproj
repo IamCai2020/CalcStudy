@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BC3FB4B6-0C2B-4E1A-B819-D8D52E56B530}</ProjectGuid>
+    <ProjectGuid>{B4B64A62-66A8-4FF6-AF4E-B99F850B9DA4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CaiEgg.ViewModels</RootNamespace>
-    <AssemblyName>CaiEgg.ViewModels</AssemblyName>
+    <RootNamespace>CaiCal.MathSimple</RootNamespace>
+    <AssemblyName>CaiCal.MathSimple</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,13 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LoongEgg.LoongCore">
-      <HintPath>..\Dependency\LoongEgg.LoongCore.dll</HintPath>
-    </Reference>
-    <Reference Include="LoongEgg.LoongLogger">
-      <HintPath>..\Dependency\LoongEgg.LoongLogger.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,13 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculatorViewModel.cs" />
+    <Compile Include="ExpressionSimple.cs" />
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CaiCal.MathSimple\CaiCal.MathSimple.csproj">
-      <Project>{b4b64a62-66a8-4ff6-af4e-b99f850b9da4}</Project>
-      <Name>CaiCal.MathSimple</Name>
+    <ProjectReference Include="..\CaiCal.Contract\CaiCal.Contract.csproj">
+      <Project>{b0e97d8e-4c73-402e-9cba-af873fa023f0}</Project>
+      <Name>CaiCal.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

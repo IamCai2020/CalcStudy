@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharExtensions.cs" />
+    <Compile Include="ExpressionPro.cs" />
     <Compile Include="ReversePolishNotation.cs" />
     <Compile Include="ReversePolishNotation.MathCore.cs" />
     <Compile Include="StringExtensions.cs" />
@@ -55,6 +56,12 @@
     <Compile Include="Token.Static.cs" />
     <Compile Include="TokenType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CaiCal.Contract\CaiCal.Contract.csproj">
+      <Project>{b0e97d8e-4c73-402e-9cba-af873fa023f0}</Project>
+      <Name>CaiCal.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

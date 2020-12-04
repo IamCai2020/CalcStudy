@@ -180,7 +180,8 @@
                     </Path>
                 </Canvas>
                 <Rectangle RadiusX="9" RadiusY="9" Margin="10" Fill="#FF343434" />
-            </Grid>
+            <TextBlock Margin="20" Text="{Binding Result}" Foreground="White" FontSize="20" TextAlignment="Right" />
+        </Grid>
         <Grid Grid.Row="2" Margin="-10,0,-10,0">
             <UniformGrid Rows="6" Columns="4">
                 <!--第一行-->
